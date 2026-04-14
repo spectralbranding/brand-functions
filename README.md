@@ -23,7 +23,10 @@ This is not a quirk of one model. Cross-model cosine similarity is **.977** acro
 
 The Brand Function provides the structured information AI systems need to perceive brands accurately. It is the schema.org of brand identity.
 
-**Research**: Zharnikov (2026v), "Spectral Metamerism in AI-Mediated Brand Perception." [Zenodo preprint](https://doi.org/10.5281/zenodo.19422427).
+**Research**:
+- Zharnikov (2026v), "Spectral Metamerism in AI-Mediated Brand Perception." 21,350 calls, 24 LLMs, 7 traditions. [Zenodo](https://doi.org/10.5281/zenodo.19422427) | [Dataset](https://huggingface.co/datasets/spectralbranding/r15-ai-search-metamerism)
+- Zharnikov (2026x), "AI-Native Brand Identity." Behavioral specification framework. [Zenodo](https://doi.org/10.5281/zenodo.19391476)
+- Zharnikov (2026ab), "Does Corporate Ownership Matter to AI?" 7,975 obs, 13 models, 7 traditions. Portfolio framing has no effect on AI perception. [Zenodo](https://doi.org/10.5281/zenodo.19555282) | [Dataset](https://huggingface.co/datasets/spectralbranding/r20-portfolio-ai-perception)
 
 ## Registry Contents
 
@@ -37,6 +40,22 @@ This registry contains Brand Functions for **26 brands** across categories:
 | Tech / Media | Apple, Samsung, Huawei, Netflix |
 | Retail / FMCG | IKEA, Zara, Uniqlo, Starbucks, Coca-Cola, Dove, Trader Joe's, Whole Foods |
 | Specialty | Erewhon, Emirates |
+
+## Empirical Evidence
+
+Brand Functions were tested in a controlled experiment (Run 12b): 26 brands from this registry were rated by 4 cloud LLMs (624 API calls) with and without their Brand Function specification.
+
+**Result**: Brand Functions produce **dimensional redistribution**, not uniform collapse reduction. The aggregate DCI change is not statistically significant (p = .427), but individual dimensions shift meaningfully:
+
+| Dimension | Mean Shift | Direction |
+|-----------|:----------:|-----------|
+| Economic | +2.5 | Toward baseline (good) |
+| Cultural | +1.6 | Toward baseline (good) |
+| Narrative | +1.3 | Toward baseline (good) |
+| Experiential | -1.2 | Further from baseline |
+| Ideological | -0.9 | Further from baseline |
+
+71% of brands (15/21 with sufficient data) showed DCI improvement. The effect is a structured intervention with measurable but uneven impact -- not a guaranteed fix. Brands should monitor per-dimension shifts after deployment.
 
 ## File Structure
 
@@ -80,7 +99,7 @@ Each `brand.json` contains:
 
 **Required fields**: `brand`, `version`, `dimensions` (all 8), and `positioning` per dimension.
 
-**Optional fields**: `score` (0-10 intensity), `key_signals` (evidence array), `source`, `updated`.
+**Optional fields**: `score` (0--10 intensity scale), `key_signals` (evidence array), `source`, `updated`.
 
 See the [JSON Schema](schema/brand-function-v1.schema.json) for the full specification.
 
@@ -147,7 +166,9 @@ If your brand is not in the registry, add it yourself or [request it](https://gi
 - [Spectral Brand Theory](https://spectralbranding.com) -- the research program behind the 8-dimension framework
 - [SBT Framework](https://github.com/spectralbranding/sbt-framework) -- open-source measurement toolkit
 - [AI Brand Perception series](https://spectralbranding.substack.com/p/the-080-ai-brand-audit) -- practitioner articles on Substack
-- [R15 paper](https://doi.org/10.5281/zenodo.19422427) -- the empirical study (21,350 API calls, 24 models)
+- [R15: AI Search Metamerism](https://doi.org/10.5281/zenodo.19422427) -- dimensional collapse study (21,350 calls, 24 models) | [Dataset](https://huggingface.co/datasets/spectralbranding/r15-ai-search-metamerism)
+- [R16: AI-Native Brand Identity](https://doi.org/10.5281/zenodo.19391476) -- behavioral specification framework
+- [R20: Portfolio Interference](https://doi.org/10.5281/zenodo.19555282) -- spectral immunity study (7,975 obs, 13 models) | [Dataset](https://huggingface.co/datasets/spectralbranding/r20-portfolio-ai-perception)
 - [.well-known/brand.json specification](https://spectralbranding.com/spec) -- the deployment standard
 
 ## License
