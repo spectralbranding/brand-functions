@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spectralbranding.com/schema/brand-function-v1.schema.json",
+  "title": "Brand Function",
+  "description": "A machine-readable brand specification across eight perceptual dimensions from Spectral Brand Theory (Zharnikov, 2026a).",
+  "type": "object",
+  "required": ["brand", "version", "dimensions"],
+  "properties": {
+    "brand": {
+      "type": "string",
+      "description": "The brand name."
+    },
+    "version": {
+      "type": "string",
+      "description": "Specification version (e.g., '1.0').",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "source": {
+      "type": "string",
+      "description": "Attribution for the specification source."
+    },
+    "updated": {
+      "type": "string",
+      "description": "Last updated date (YYYY-MM or YYYY-MM-DD).",
+      "pattern": "^\\d{4}-\\d{2}(-\\d{2})?$"
+    },
+    "dimensions": {
+      "type": "object",
+      "description": "Eight perceptual dimensions from Spectral Brand Theory.",
+      "required": ["semiotic", "narrative", "ideological", "experiential", "social", "economic", "cultural", "temporal"],
+      "properties": {
+        "semiotic": { "$ref": "#/$defs/dimension" },
+        "narrative": { "$ref": "#/$defs/dimension" },
+        "ideological": { "$ref": "#/$defs/dimension" },
+        "experiential": { "$ref": "#/$defs/dimension" },
+        "social": { "$ref": "#/$defs/dimension" },
+        "economic": { "$ref": "#/$defs/dimension" },
+        "cultural": { "$ref": "#/$defs/dimension" },
+        "temporal": { "$ref": "#/$defs/dimension" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "dimension": {
+      "type": "object",
+      "required": ["positioning"],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Canonical intensity score (0-10). Optional but recommended."
+        },
+        "positioning": {
+          "type": "string",
+          "description": "1-3 sentence description of how the brand behaves on this dimension."
+        },
+        "key_signals": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Observable evidence supporting the positioning claim."
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
