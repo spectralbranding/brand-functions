@@ -26,7 +26,7 @@ The Brand Function provides the structured information AI systems need to percei
 **Research**:
 - Zharnikov (2026v), "Spectral Metamerism in AI-Mediated Brand Perception." 21,350 calls, 24 LLMs, 7 traditions. [Zenodo](https://doi.org/10.5281/zenodo.19422427) | [Dataset](https://huggingface.co/datasets/spectralbranding/r15-ai-search-metamerism)
 - Zharnikov (2026x), "AI-Native Brand Identity." Behavioral specification framework. [Zenodo](https://doi.org/10.5281/zenodo.19391476)
-- Zharnikov (2026ab), "Does Corporate Ownership Matter to AI?" 7,975 obs, 13 models, 7 traditions. Portfolio framing has no effect on AI perception. [Zenodo](https://doi.org/10.5281/zenodo.19555282) | [Dataset](https://huggingface.co/datasets/spectralbranding/r20-portfolio-ai-perception)
+- Zharnikov (2026ac), "Spectral Immunity: Why Brand Portfolio Interference Disappears for AI Observers." 9,925 obs, 40 brands, 13 models, 7 traditions. Supersedes R8 (2026q) + R20 (2026ab). [Zenodo](https://doi.org/10.5281/zenodo.19765401) | [Dataset](https://huggingface.co/datasets/spectralbranding/r20-portfolio-ai-perception)
 
 ## Registry Contents
 
@@ -168,7 +168,7 @@ If your brand is not in the registry, add it yourself or [request it](https://gi
 - [AI Brand Perception series](https://spectralbranding.substack.com/p/the-080-ai-brand-audit) -- practitioner articles on Substack
 - [R15: AI Search Metamerism](https://doi.org/10.5281/zenodo.19422427) -- dimensional collapse study (21,350 calls, 24 models) | [Dataset](https://huggingface.co/datasets/spectralbranding/r15-ai-search-metamerism)
 - [R16: AI-Native Brand Identity](https://doi.org/10.5281/zenodo.19391476) -- behavioral specification framework
-- [R20: Portfolio Interference](https://doi.org/10.5281/zenodo.19555282) -- spectral immunity study (7,975 obs, 13 models) | [Dataset](https://huggingface.co/datasets/spectralbranding/r20-portfolio-ai-perception)
+- [R21: Spectral Immunity](https://doi.org/10.5281/zenodo.19765401) -- spectral immunity study (9,925 obs, 40 brands, 13 models, supersedes R8 + R20) | [Dataset](https://huggingface.co/datasets/spectralbranding/r20-portfolio-ai-perception)
 - [.well-known/brand.json specification](https://spectralbranding.com/spec) -- the deployment standard
 
 ## License
