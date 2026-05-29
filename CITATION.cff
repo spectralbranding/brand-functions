@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "brand-functions — Brand Function Spec Registry"
+version: "1.0.0"
+authors:
+  - family-names: "Zharnikov"
+    given-names: "Dmitry"
+    orcid: "0009-0000-6893-9231"
+date-released: "2026-05-29"
+license: "MIT"
+license-url: "https://opensource.org/licenses/MIT"
+repository-code: "https://github.com/spectralbranding/brand-functions"
+url: "https://github.com/spectralbranding/brand-functions"
+abstract: >
+  Brand Function Spec Registry: machine-readable JSON specifications describing
+  how brands behave across the eight Spectral Brand Theory perceptual dimensions
+  (Semiotic, Narrative, Ideological, Experiential, Social, Economic, Cultural,
+  Temporal). Each brand ships a brand.json file intended for deployment at
+  /.well-known/brand.json so AI systems can discover structured brand
+  information rather than reconstructing it from scattered training data.
+  Repository includes 26 brand specifications, a JSON Schema for validation,
+  and per-brand README summaries.
+keywords:
+  - "spectral brand theory"
+  - "brand function"
+  - "AI brand perception"
+  - "well-known URI"
+  - "JSON Schema"
+  - "machine-readable brand specification"

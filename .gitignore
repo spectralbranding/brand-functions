@@ -1,0 +1,22 @@
+
+# Fleet internal (public repo — nothing tracked)
+.claude/
+.claude-decisions/
+skills/
+.clinerules
+.cursorrules
+.cursorignore
+.rooignore
+.mcp.json
+.flake8
+
+# Environment + secrets (PUBLIC_MIRROR_STANDARD.md v1.0.0)
+.env
+.env.*
+*.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store

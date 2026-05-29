@@ -1,3 +1,7 @@
+[![MIT License](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE)
+[![CC-BY 4.0](https://img.shields.io/badge/Data-CC--BY_4.0-lightgrey.svg)](LICENSE-data)
+![Last Updated](https://img.shields.io/badge/updated-2026--05--29-success)
+
 # Brand Function Registry
 
 Machine-readable brand specifications for the AI era.
@@ -177,3 +181,125 @@ If your brand is not in the registry, add it yourself or [request it](https://gi
 
 Brand Function data: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 JSON Schema: MIT.
+
+---
+
+## 1 | Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/spectralbranding/brand-functions.git
+cd brand-functions
+```
+
+The project anchor is `.here` at the repository root. This repository is a
+spec registry — there is no Python package and no `pyproject.toml`. The only
+external dependency is `jsonschema` (for validation):
+
+```bash
+pip install jsonschema
+```
+
+---
+
+## 2 | Project Layout
+
+```
+.
+├── brands/                              # One subdirectory per brand
+│   ├── apple/
+│   │   ├── brand.json                   # Brand Function specification
+│   │   └── README.md                    # Human-readable summary
+│   ├── coca-cola/
+│   ├── ...                              # 26 brands total
+│   └── zara/
+├── schema/
+│   └── brand-function-v1.schema.json    # JSON Schema for validation
+├── output/                              # Validation artifacts
+│   ├── figures/                         # (reserved)
+│   ├── tables/                          # validation.csv after reproduce.sh
+│   └── logs/                            # master_run.log after reproduce.sh
+├── CITATION.cff                         # Machine-readable citation
+├── LICENSE                              # MIT (code + JSON Schema)
+├── LICENSE-data                         # CC BY 4.0 (brand.json + summaries)
+├── reproduce.sh                         # Validate every brand.json
+├── .here                                # Project root anchor
+├── README.md                            # This file
+└── .gitignore                           # Excludes env, secrets, fleet-internal
+```
+
+---
+
+## 3 | Quick Start
+
+Validate every Brand Function in the registry against the JSON Schema:
+
+```bash
+./reproduce.sh
+```
+
+The script checks dependencies (`jsonschema`), validates every
+`brands/<slug>/brand.json` against `schema/brand-function-v1.schema.json`,
+and writes:
+
+- `output/tables/validation.csv` — one row per brand: `slug,status,error`
+- `output/logs/master_run.log` — run log including git SHA + UTC timestamp
+
+Exit code is non-zero if any brand fails validation.
+
+---
+
+## 4 | Dependencies
+
+| Component | Version | Purpose |
+|-----------|---------|---------|
+| `python3` | ≥ 3.10 | Validation script runtime |
+| `jsonschema` | ≥ 4.0 | JSON Schema validator (`pip install jsonschema`) |
+| `bash` | ≥ 4.0 | `reproduce.sh` orchestrator |
+| `git` | any | Run-log SHA capture |
+
+No build system, no virtual environment required. The validator is invoked
+inline by `reproduce.sh`; there is no separate Python package to install.
+
+---
+
+## 5 | Script Map
+
+| Script | Inputs | Outputs |
+|--------|--------|---------|
+| `reproduce.sh` | `brands/*/brand.json`, `schema/brand-function-v1.schema.json` | `output/tables/validation.csv`, `output/logs/master_run.log` |
+
+The registry ships no analysis pipeline. To run an AI Brand Audit against a
+specific brand specification, see the [sbt-papers/r15-ai-search-metamerism](https://github.com/spectralbranding/sbt-papers/tree/main/r15-ai-search-metamerism)
+companion repository.
+
+---
+
+## 6 | Citation
+
+If you build on this registry, please cite:
+
+> Dmitry Zharnikov (2026). "brand-functions — Brand Function Spec Registry." https://github.com/spectralbranding/brand-functions. Licensed under MIT (code) and CC BY 4.0 (data).
+
+Machine-readable citation: see [`CITATION.cff`](CITATION.cff). GitHub renders
+"Cite this repository" natively from this file in 12+ output formats.
+
+For the underlying eight-dimension framework, cite the Spectral Brand Theory
+foundational paper and the R15 metamerism study referenced in the research
+section above.
+
+---
+
+## 7 | Licence
+
+- **JSON Schema + scripts** — © Dmitry Zharnikov, 2026. [MIT Licence](LICENSE).
+- **Brand Function data + per-brand summaries** — © Dmitry Zharnikov, 2026. [CC BY 4.0](LICENSE-data).
+
+Both licences permit reuse with attribution. MIT permits modification and
+redistribution of the JSON Schema and `reproduce.sh`; CC BY 4.0 permits any
+reuse of `brands/*/brand.json` and `brands/*/README.md` with attribution.
+
+---
+
+*Last updated: 2026-05-29*
