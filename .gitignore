@@ -1,6 +1,5 @@
 
 # Fleet internal (public repo — nothing tracked)
-.claude/
 .claude-decisions/
 skills/
 .clinerules
@@ -20,3 +19,14 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .DS_Store
+
+# Fleet internal (public repo — nothing tracked)
+.claude/
+.claude-decisions/
+skills/
+.clinerules
+.cursorrules
+.cursorignore
+.rooignore
+.mcp.json
+.flake8
