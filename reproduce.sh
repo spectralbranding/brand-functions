@@ -12,7 +12,9 @@
 #   ./reproduce.sh                 # Validate all brand.json files
 #   ./reproduce.sh --check-only    # Verify dependencies; do not validate
 #
-# Dependencies: python3 with the `jsonschema` package (pip install jsonschema).
+# Dependencies: uv only. The `jsonschema` package is resolved per-run by
+# `uv run --with jsonschema`, so nothing has to be installed globally first --
+# this stays a one-command reproduction from a clean machine.
 #
 # Outputs:
 #   output/logs/master_run.log      Pipeline run log
@@ -43,12 +45,14 @@ done
 
 # 1. Dependency check
 echo ">>> Checking dependencies..." | tee -a "$LOG_FILE"
-if ! command -v python3 >/dev/null 2>&1; then
-  echo "ERROR: python3 not found." | tee -a "$LOG_FILE"
+if ! command -v uv >/dev/null 2>&1; then
+  echo "ERROR: 'uv' not found on PATH. Install it from https://docs.astral.sh/uv/" | tee -a "$LOG_FILE"
   exit 1
 fi
-if ! python3 -c "import jsonschema" 2>/dev/null; then
-  echo "ERROR: 'jsonschema' Python package not installed. Run: pip install jsonschema" | tee -a "$LOG_FILE"
+# Resolve the validator up front so a network/resolution failure is reported
+# here, by name, rather than surfacing mid-validation as a bare traceback.
+if ! uv run --with jsonschema python -c "import jsonschema" 2>/dev/null; then
+  echo "ERROR: could not resolve the 'jsonschema' package via uv." | tee -a "$LOG_FILE"
   exit 1
 fi
 
@@ -61,7 +65,7 @@ fi
 echo ">>> Validating brand.json files against schema..." | tee -a "$LOG_FILE"
 echo "slug,status,error" > "$TABLE_FILE"
 
-python3 - "$TABLE_FILE" <<'PY' | tee -a "$LOG_FILE"
+uv run --with jsonschema python - "$TABLE_FILE" <<'PY' | tee -a "$LOG_FILE"
 import csv, json, sys
 from pathlib import Path
 import jsonschema
