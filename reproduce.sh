@@ -27,6 +27,7 @@ cd "$REPO_ROOT"
 
 mkdir -p output/figures output/tables output/logs
 LOG_FILE="output/logs/master_run.log"
+: > "$LOG_FILE"  # one log per pipeline execution (PUBLIC_MIRROR_STANDARD §5)
 TABLE_FILE="output/tables/validation.csv"
 
 echo "==================================================" | tee -a "$LOG_FILE"
